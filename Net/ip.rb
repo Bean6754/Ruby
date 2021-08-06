@@ -1,9 +1,11 @@
 require 'net/http'
 require 'resolv-replace'
 
+# Get date and time then append to the file-name.
 the_date = Time.now.strftime("%d-%m-%Y_%H-%M")
 file_name = ("ip_" + the_date + ".txt")
 
+# Set URL variables.
 URL_1 = URI('http://myexternalip.com/raw')
 URL_2 = URI('http://checkip.dyndns.org')
 URL_3 = URI('http://whatismyip.akamai.com')
@@ -13,6 +15,8 @@ URL_6 = URI('http://ipv6.icanhazip.com')
 URL_7 = URI('http://ident.me')
 URL_8 = URI('http://bot.whatismyipaddress.com')
 
+# HTTP/Web request for each URL variable
+# then write the output to the file.
 IP_1 = Net::HTTP.get(URL_1)
 output1 = File.open(file_name,"w")
 output1 << IP_1 + "\n"
